@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+
+<head>
+	<meta charset="UTF-8">
+	<title>返却登録</title>
+</head>
+
+<body>
+	<div>＜＜＜返却情報を入力してください＞＞＞</div>
+	<div th:object="${returnBookId}">
+		<p>
+			選択中の書籍：<span th:text="*{title}"></span>
+		</p>
+		<p>
+			ISBN-13：<span th:text="*{isbn}"></span>
+		</p>
+	</div><br>
+	<form action="/returncreate" method="post" th:object="${returnBook}">
+		<div>
+			ISBN-13<br>
+			<input type="text" th:field="*{isbn}">
+			<span th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}">
+				ISBN入力エラー
+			</span>
+
+		</div>
+		<div>
+			名前<br>
+			<input type="text" th:field="*{rentalname}">
+			<span th:if="${#fields.hasErrors('rentalname')}" th:errors="*{rentalname}">
+				名前入力エラー
+			</span>
+
+		</div>
+		<div>
+			返却日<br>
+			<input type="date" th:field="*{return_date}">
+			<span th:if="${#fields.hasErrors('return_date')}" th:errors="*{return_date}">
+				返却日入力エラー
+			</span>
+		</div>
+
+
+		<div>
+			<input type="submit" value="返却登録">
+		</div>
+
+	</form>
+	<br>
+	<button type="button" onclick="history.back()">戻る</button>
+
+</body>
+
+</html>

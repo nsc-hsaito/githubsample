@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<title>書籍追加</title>
+</head>
+<body>
+	<form action="/create" method="post" th:object="${book}">
+		<div>
+			タイトル<br>
+			<input type="text" th:field="*{title}">
+			<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">
+				タイトル入力エラー
+			</span>
+		</div>
+		<div>
+			分類ID (1:DB, 2:Java, 3:C#, 4:IT知識)<br>
+			<input type="text" th:field="*{category_id}">
+			<span th:if="${#fields.hasErrors('category_id')}" th:errors="*{category_id}">
+				分類ID入力エラー
+			</span>
+		</div>
+		<div>
+			発行日<br>
+			<input type="date" th:field="*{publish_date}">
+			<span th:if="${#fields.hasErrors('publish_date')}" th:errors="*{publish_date}">
+				発行日入力エラー
+			</span>
+		</div>
+		<div>
+			ISBN<br>
+			<input type="text" th:field="*{isbn}">
+			<span th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}">
+				ISBN入力エラー
+			</span>
+		</div>
+		<div>
+			購入者<br>
+			<input type="text" th:field="*{buyer}">
+			<span th:if="${#fields.hasErrors('buyer')}" th:errors="*{buyer}">
+				購入者入力エラー
+			</span>
+		</div>
+		<div>
+			購入日<br>
+			<input type="date" th:field="*{buy_date}">
+			<span th:if="${#fields.hasErrors('buy_date')}" th:errors="*{buy_date}">
+				購入日入力エラー
+			</span>
+		</div>
+		<div>
+			備考<br>
+			<textarea th:field="*{memo}" cols="80" rows="5"></textarea>
+			<br>
+			<span th:if="${#fields.hasErrors('memo')}" th:errors="*{memo}">
+				備考入力エラー
+			</span>
+		</div>
+		<div>
+			<input type="submit" value="書籍追加"><br>
+		</div>
+	</form>
+	<br>
+	<button type="button" onclick="history.back()">戻る</button>
+	
+
+</body>
+</html>

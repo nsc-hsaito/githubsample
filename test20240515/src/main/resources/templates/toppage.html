@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<title>１シス書籍管理トップページ</title>
+</head>
+<body>
+<p>
+		<a href="/bookform">書籍追加</a>
+	</p>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>タイトル</th>
+				<th>分類</th>
+				<th>ISBN-13</th>
+				<th>0：貸出可　1：貸出不可</th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="book : ${books}" th:object="${book}">
+				<td th:text="*{title}"></td>
+				<td th:text="*{category_id}"></td>
+				<td th:text="*{isbn}"></td>
+				<td th:text="*{status}"></td>
+				<td><a th:href="@{|/bookinfo/*{id}|}">詳細</a></td>
+				<td>
+					<a th:href="@{|/rentalbook/*{id}|}">借りる</a>
+					<a th:href="@{|/returnbook/*{id}|}">返す</a>
+				</td>
+				
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

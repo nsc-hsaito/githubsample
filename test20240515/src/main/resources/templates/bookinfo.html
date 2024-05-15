@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<title>書籍詳細情報</title>
+</head>
+<body>
+	<div th:object="${book}">
+    <p>
+        タイトル：<span th:text="*{title}"></span>
+    </p>
+    <p>
+        カテゴリID：<span th:text="*{category_id}"></span>
+    </p>
+    <p>
+        発行日：<span th:text="*{publish_date}"></span>
+    </p>
+    <p>
+        ISBN-13：<span th:text="*{isbn}"></span>
+    </p>
+    <p>
+        購入者：<span th:text="*{buyer}"></span>
+    </p>
+    <p>
+        購入日：<span th:text="*{buy_date}"></span>
+    </p>
+    <p>
+        memo：<br>
+        <th:block th:each="line : *{memo.split('\n')}">
+            <th:block th:text="${line}"></th:block><br>
+        </th:block>
+    </p>
+</div>
+<button type="button" onclick="history.back()">戻る</button>
+
+</body>
+</html>

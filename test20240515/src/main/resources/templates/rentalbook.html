@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+
+<head>
+	<meta charset="UTF-8">
+	<title>貸出登録</title>
+</head>
+
+<body>
+	<div>＜＜＜貸出情報を入力してください＞＞＞</div>
+	
+	<form action="/rentalcreate" method="post" th:object="${rentalBook}">
+		
+		<div th:object="${rentalBookId}">
+		<p>
+			選択中の書籍：<span th:text="*{title}"></span>
+		</p>
+		<p>
+			ISBN-13：<span th:text="*{isbn}"></span>
+		</p>
+		</div>
+		
+		<div>
+			ISBN-13<br>
+			<input type="text" th:field="*{isbn}">
+			<span th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}">
+				ISBN入力エラー
+			</span>
+
+		</div>
+		<div>
+			名前<br>
+			<input type="text" th:field="*{rentalname}">
+			<span th:if="${#fields.hasErrors('rentalname')}" th:errors="*{rentalname}">
+				名前入力エラー
+			</span>
+
+		</div>
+		<div>
+			貸出日<br>
+			<input type="date" th:field="*{rent_date}">
+			<span th:if="${#fields.hasErrors('rent_date')}" th:errors="*{rent_date}">
+				貸出日入力エラー
+			</span>
+		</div>
+
+
+		<div>
+			<input type="submit" value="貸出登録">
+		</div>
+	</form>
+	
+	<br>
+	<button type="button" onclick="history.back()">戻る</button>
+
+</body>
+
+</html>
